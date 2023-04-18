@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Nav from "./components/Nav";
 import Stock from './pages/Stock';
+import stocks from './Data';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path="/about" element={<About/>}/>
       <Route path="/stocks/" element={<Dashboard/>}/>
-      <Route path="/stocks/:symbol" element={<Stock/>}/>
+      <Route path="/stocks/:symbol" element={<Stock data={stocks}/>}/>
     </Routes>
     </div>
   );

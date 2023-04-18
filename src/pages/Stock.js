@@ -1,85 +1,29 @@
 ///stocks/:symbol
-import stocks from "../Data";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+// import stocks from '../Data';
 
 
 function Stock(props) {
-    const comp = useParams();
-    const symbol = comp.symbol;
-// console.log(symbol);
+    const params = useParams();
+    const symbol = params.symbol;
+console.log(symbol);
 
 
-const [stockInfo, setStockInfo] = useState(null);
-    
-    // symbol: "", lastPrice: 0, change:0, High:0, Low: 0, Open: 0
+    console.log(props.data);
+    //Need to look through each element's symbol & compare it to our params
+    const displayIndividualStock = props.data.find((element)=> symbol === element.symbol); 
+    console.log(displayIndividualStock)
+    return (
+    <div className='style-stock'>
+        <h2>Name: {displayIndividualStock.name}</h2>
+        <h3>Last Price: {displayIndividualStock.lastPrice}</h3>
+        <h3>Change: {displayIndividualStock.change}</h3>
+        <h3>High: {displayIndividualStock.high}</h3>
+        <h3>Low: {displayIndividualStock.low}</h3>
+        <h3>Open: {displayIndividualStock.open}</h3>
 
-    if(stockInfo === null) {
-        stocks.map((item,index) => {
-            if(symbol === item.symbol)
-            {
-              if(stockInfo === null)
-              {
-                setStockInfo({
-                  symbol: item.symbol,
-                  lastPrice: item.lastPrice,
-                  High: item.high,
-                  Low: item.low,
-                  Open: item.open
-                })
-              }
-            }
-          })
-    } 
-let emptyArr = [];
-emptyArr.push(stockInfo);
-console.log(emptyArr);
-  useEffect(() => {
-    console.log(stockInfo);
-  },
-  [stockInfo]
-  );
-
-//   const updateStock = stockInfo.map((item, index) => {
-    // return(
-        // <div>
-            {/* Last Price: {item.lastPrice} */}
-        {/* </div> */}
-        // 
-        // 
-        // 
-    // )
-//   })
-const updateStock = () => {
-    // console.log("inside ");
-    return(
-        <ul>
-
-        </ul>
-    )
-    // for (const [key, value] of Object.entries(stockInfo)) {
-        // print key and value on console
-        // return (<div>
-            {/* <div>{`${key}: ${value}`}</div> */}
-            {/* <div>{`${key}: ${value}`}</div> */}
-        {/* </div>) */}
-    //   }
-    // for(const item in stockInfo) 
-    // {
-    //    return <div>{`${item}: ${stockInfo[item]}`}</div>
-    // } 
-}
-
-
-    return ( 
-        <div>
-            <div className="individual-stock">
-                Symbol:{symbol}
-                {stockInfo? updateStock() : <div>Not found</div>}
-                {/* {updateStock} */}
-            </div>
-        </div>
-     );
+    </div>)
 }
 
 export default Stock;

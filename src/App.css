@@ -59,8 +59,16 @@ th, tr, td {
     color: black;
   }
 
-  .individual-stock {
-    margin-top: 50px;
+  .change-color {
+    color: green;
+  }
+
+  .style-stock {
+    margin-top: 90px;
     margin-left: 40px;
     font-weight: bold;
+  }
+
+  .red {
+    color: red;
   }

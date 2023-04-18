@@ -18,10 +18,12 @@ function Dashboard() {
                 {/* Loop through list */}
                 {stocks.map((company, index) => (
                         <tr key={index}>
-                            {/*the backticks/Template literal allows you to link the symbol property from the array and display that when th elink is clicked */}
+                            {/*the backticks/Template literal allows you to link the symbol property from the array and display that when the link is clicked */}
                             <td className="link"><Link to={`/stocks/${company.symbol}`}>{company.name}({company.symbol})</Link></td>
                             <td>{company.lastPrice}</td>
-                            <td className="change-color">{company.change}</td>
+                            
+                            {/* change negative score to red */}
+                            <td style={{color: company.change < 0? "red" : "green"}}>{company.change}</td>
                        </tr> 
                 ))}
                 </tbody>
